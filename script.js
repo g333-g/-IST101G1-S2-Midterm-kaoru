@@ -71,3 +71,23 @@ function updateBigCup() {
     liters.innerText = `${2 - (25 * fullCups) / 100}L`;
   }
 }
+
+fetch("https://api.ipify.org?format=json")
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("lb-ip").textContent = `${data.ip}`;
+  })
+  .catch((error) => {
+    document.getElementById("lb-ip").textContent = "Unable to fetch LB IP.";
+    console.error("Error fetching LB IP:", error);
+  });
+
+fetch("/instance.json")
+  .then((response) => response.json())
+  .then((data) => {
+    document.getElementById("ec2-ip").textContent = `${data.publicIp}`;
+  })
+  .catch((error) => {
+    document.getElementById("ec2-ip").textContent = "Unable to fetch EC2 IP.";
+    console.error("Error fetching EC2 IP:", error);
+  });

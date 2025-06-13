@@ -29,10 +29,17 @@
   <body>
     <h1 id="title">MidTerm Exam - DevOps Infrastructure Level 1</h1>
     <p>Kaoru Hosoda</p>
-    <p>12th June, 2025</p>
+    <p id="datetime"></p>
 
+    <script>
+      const now = new Date();
+      const formatted = now.toLocaleString();
+      document.getElementById("datetime").textContent = formatted;
+    </script>
+
+    <p>Load Balancer Public IP:</p>
+    <div id="lb-ip">Loading...</div>
     <p>My EC2 Instance Public IP:</p>
-
     <div id="ec2-ip">Loading...</div>
 
     <script>
